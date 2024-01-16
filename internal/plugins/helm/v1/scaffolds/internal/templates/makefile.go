@@ -135,7 +135,7 @@ deploy: kustomize ## Deploy controller to the K8s cluster specified in ~/.kube/c
 	$(KUSTOMIZE) build config/default | kubectl apply -f -
 
 .PHONY: undeploy
-undeploy: ## Undeploy controller from the K8s cluster specified in ~/.kube/config.
+undeploy: kustomize ## Undeploy controller from the K8s cluster specified in ~/.kube/config.
 	$(KUSTOMIZE) build config/default | kubectl delete -f -
 
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
